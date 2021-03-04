@@ -7,6 +7,60 @@ local VIM = game:GetService("VirtualInputManager")
 local chars = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
 local player = game.Players.LocalPlayer
 
+local function quets()
+local quest = game:GetService("Players").LocalPlayer.PlayerValues.CurrentQuest.Value
+if quest == "" and currentquests == "Defeat 10 Wood Dummies"  then
+   
+game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest1)
+ 
+    
+    
+    
+    
+else    
+if quest == "" and currentquests == "Defeat 9 Ice Dummies"  then
+   
+game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest2)
+else
+if quest == "" and currentquests == "Defeat 8 Rock Dummies"  then
+   
+game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest3)
+ else
+if quest == "" and currentquests == "Defeat 7 Iron Dummies"  then
+   
+game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest4)
+else
+if quest == "" and currentquests == "Defeat 6 Metal Dummies"  then
+   
+game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest5)
+else
+    if quest == "" and currentquests == "Defeat 5 Steel Dummies"  then
+   
+game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest6)
+
+else
+print("no quest")
+  
+ 
+ 
+     
+ 
+ 
+ 
+  end    
+ end   
+end
+end
+end     
+end
+end
+
+
+
+
+
+
+
 currentquests = "Defeat 10 Wood Dummies"
 quest1 = game:GetService("ReplicatedStorage").Quests["Defeat 10 Wood Dummies"]
 quest2 = game:GetService("ReplicatedStorage").Quests["Defeat 9 Ice Dummies"]
@@ -215,50 +269,3 @@ end
 end)
 
 
-local function quets()
-local quest = game:GetService("Players").LocalPlayer.PlayerValues.CurrentQuest.Value
-if quest == "" and currentquests == "Defeat 10 Wood Dummies"  then
-   
-game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest1)
- 
-    
-    
-    
-    
-else    
-if quest == "" and currentquests == "Defeat 9 Ice Dummies"  then
-   
-game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest2)
-else
-if quest == "" and currentquests == "Defeat 8 Rock Dummies"  then
-   
-game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest3)
- else
-if quest == "" and currentquests == "Defeat 7 Iron Dummies"  then
-   
-game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest4)
-else
-if quest == "" and currentquests == "Defeat 6 Metal Dummies"  then
-   
-game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest5)
-else
-    if quest == "" and currentquests == "Defeat 5 Steel Dummies"  then
-   
-game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest6)
-
-else
-print("no quest")
-  
- 
- 
-     
- 
- 
- 
-  end    
- end   
-end
-end
-end     
-end
-end
