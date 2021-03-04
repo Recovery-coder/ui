@@ -1,9 +1,27 @@
 mob = ""
 Distance = -9
 weapon = ""
+
+
 local VIM = game:GetService("VirtualInputManager")
 local chars = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
 local player = game.Players.LocalPlayer
+
+currentquests = "Defeat 10 Wood Dummies"
+quest1 = game:GetService("ReplicatedStorage").Quests["Defeat 10 Wood Dummies"]
+quest2 = game:GetService("ReplicatedStorage").Quests["Defeat 9 Ice Dummies"]
+quest3 = game:GetService("ReplicatedStorage").Quests["Defeat 8 Rock Dummies"]
+quest4 = game:GetService("ReplicatedStorage").Quests["Defeat 7 Iron Dummies"]
+quest5 = game:GetService("ReplicatedStorage").Quests["Defeat 6 Metal Dummies"]
+quest6 = game:GetService("ReplicatedStorage").Quests["Defeat 5 Steel Dummies"]
+
+
+
+
+
+
+
+
 
 function enemy()
     while wait(0) do
@@ -49,12 +67,19 @@ local tab2 = win:Tab("Skills")
 local tab3 = win:Tab("Item Tp")
 local tab4 = win:Tab("Misc")
 
-
 tab:Toggle("AutoFarm",false, function(t)
 _G.Farm = t
 
 while true do 
 if not _G.Farm then return end
+
+
+
+
+
+
+
+
 repeat
 local v = enemy()
 damage()
@@ -63,7 +88,24 @@ wait()
 until v.Humanoid.Health <= 0 or not _G.Farm
 end
 end)
+tab:Toggle("AutoQuest",false, function(t)
+_G.quest = t    
+if not _G.quest then return end     
+   
+repeat    
+wait(0)
+quets()
+until  not _G.quest
+end)    
 
+
+
+tab:Dropdown("Quest",{"Defeat 10 Wood Dummies","Defeat 9 Ice Dummies","Defeat 8 Rock Dummies","Defeat 7 Iron Dummies","Defeat 6 Metal Dummies","Defeat 5 Steel Dummies"}, function(t)
+
+
+currentquests = t
+
+end)
 tab:Slider("Slider",-15,15,5, function(t)
 Distance = t
 end)
@@ -128,16 +170,18 @@ tab3:Toggle("Item Tp",false, function(t)
 _G.tp = t
 while true do
 if not _G.tp then return end
-wait(0.80)    
-for i,v in pairs (game.Workspace:GetDescendants()) do 
-    if v.Name == 'TouchInterest' then
-        firetouchinterest(chars.HumanoidRootPart, v.Parent, 0)
-    end
+repeat 
+for _, v in pairs(game:GetService("Workspace"):GetDescendants()) do
+if  v.Name == "TouchInterest"  then
+  
+firetouchinterest(chars.HumanoidRootPart, v.Parent,0)
+end    
+end    
+wait(0.30)
+until not _G.tp
 end 
-end
+end)
 
-
-end)    
 
 tab3:Toggle("Remove Useless Items",false, function(t)
 _G.ew = t
@@ -169,3 +213,52 @@ if not _G.noclip then return end
 end) 
 end
 end)
+
+
+local function quets()
+local quest = game:GetService("Players").LocalPlayer.PlayerValues.CurrentQuest.Value
+if quest == "" and currentquests == "Defeat 10 Wood Dummies"  then
+   
+game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest1)
+ 
+    
+    
+    
+    
+else    
+if quest == "" and currentquests == "Defeat 9 Ice Dummies"  then
+   
+game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest2)
+else
+if quest == "" and currentquests == "Defeat 8 Rock Dummies"  then
+   
+game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest3)
+ else
+if quest == "" and currentquests == "Defeat 7 Iron Dummies"  then
+   
+game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest4)
+else
+if quest == "" and currentquests == "Defeat 6 Metal Dummies"  then
+   
+game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest5)
+else
+    if quest == "" and currentquests == "Defeat 5 Steel Dummies"  then
+   
+game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest6)
+
+else
+print("no quest")
+  
+ 
+ 
+     
+ 
+ 
+ 
+  end    
+ end   
+end
+end
+end     
+end
+end
