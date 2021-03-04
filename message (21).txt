@@ -113,7 +113,7 @@ end)
 tab:Dropdown("Mobs",{"Wood Dummy","Ice Dummy","Rock Dummy","Iron Dummy","Metal Dummy","Steel Dummy"}, function(t)
 mob = t
 end)
-tab:Dropdown("Weapons",{"Moku Moku no mi","Goro Goro no mi","Electrification","Mera Mera no mi","Kage Kage no mi","Pika Pika no mi"}, function(t)
+tab:Dropdown("Weapons",{"Moku Moku no mi","Goro Goro no mi","Electrification","Mera Mera no mi","Kage Kage no mi","Pika Pika no mi","Ittoryu; Shusui"}, function(t)
 weapon = t
 end)
 tab:Toggle("Auto Equip",false, function(t)
