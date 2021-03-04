@@ -140,7 +140,7 @@ function lib:Window(text, preset, closebind)
 
     MakeDraggable(DragFrame, Main)
 
-    local uitoggled = true
+    local uitoggled = false
     UserInputService.InputBegan:Connect(
         function(io, p)
             if io.KeyCode == CloseBind then
@@ -157,7 +157,7 @@ function lib:Window(text, preset, closebind)
                         .6,
                         true
                     )
-                    knixhub.Enabled = true
+                   knixhub.Enabled = true
                     
 uitoggled = false
                 end
