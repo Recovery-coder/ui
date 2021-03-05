@@ -122,7 +122,7 @@ game:GetService("ReplicatedStorage").RemoteEvents.WhiteBlowRemote:FireServer(unp
     
 
 end
-local lib = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/Vape.txt")()
+local lib = loadstring(game:HttpGet"https://raw.githubusercontent.com/Recovery-coder/ui/main/Vape")()
 
 local win = lib:Window("Project Porn",Color3.fromRGB(44, 120, 224), Enum.KeyCode.RightControl)
 local tab = win:Tab("AutoFarm")
@@ -290,7 +290,7 @@ if v.Name == "Urn" then
 v.Parent = game.Players.LocalPlayer.Character
 end
 end
-wait(0.1)
+wait(0.50)
 sellurn()
 
 end)
