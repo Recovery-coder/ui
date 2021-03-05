@@ -6,16 +6,25 @@ weapon = ""
 local VIM = game:GetService("VirtualInputManager")
 local chars = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
 local player = game.Players.LocalPlayer
+local function sellurn()
+    game:GetService("ReplicatedStorage").RemoteEvents.ItemRemote:FireServer()
 
+end
+local function hidename()
+if game.Players.LocalPlayer.Character.Head:FindFirstChild("Overhead") then
+game.Players.LocalPlayer.Character.Head:FindFirstChild("Overhead"):Destroy()
+end
+end
 local function quets()
 local quest = game:GetService("Players").LocalPlayer.PlayerValues.CurrentQuest.Value
 if quest == "" and currentquests == "Defeat 10 Wood Dummies"  then
    
 game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest1)
- 
-    
-    
-    
+
+local function sellurn()
+game:GetService("ReplicatedStorage").RemoteEvents.ItemRemote:FireServer()
+
+end    
     
 else    
 if quest == "" and currentquests == "Defeat 9 Ice Dummies"  then
@@ -227,7 +236,7 @@ if not _G.tp then return end
 for _, v in pairs(game:GetService("Workspace"):GetDescendants()) do
 if  v.Name == "TouchInterest"  then
   
-firetouchinterest(chars.HumanoidRootPart, v.Parent,0)
+firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent,0)
 end    
 end    
 wait(0.30)
@@ -266,3 +275,22 @@ doacolor.Brightness = 0.30000001192093
 doacolor.Contrast = 1
 end)
 
+tab4:Button("Hide Name", function()
+hidename()
+end)
+tab4:Button("Equip all Items", function()
+for _, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+v.Parent = game.Players.LocalPlayer.Character
+end
+end)
+
+tab4:Button("Sell Urn", function()
+for _, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+if v.Name == "Urn" then
+v.Parent = game.Players.LocalPlayer.Character
+end
+end
+wait(0.1)
+sellurn()
+
+end)
