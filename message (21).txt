@@ -139,7 +139,7 @@ local v = enemy()
 damage()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(v.HumanoidRootPart.Position) * CFrame.Angles(math.rad(Distance < 0 and 0 or 0), 0, 0) + Vector3.new(3, Distance, 0)
 wait()
-until v.Humanoid.Health <= 0 or not _G.Farm
+until not _G.Farm or enemy ~= v.Name or not v.Parent or not v:FindFirstChild("Humanoid") or v.Humanoid.Health <= 0
 end
 end)
 tab:Toggle("AutoQuest",false, function(t)
@@ -224,7 +224,6 @@ tab3:Toggle("Item Tp",false, function(t)
 _G.tp = t
 while true do
 if not _G.tp then return end
-repeat 
 for _, v in pairs(game:GetService("Workspace"):GetDescendants()) do
 if  v.Name == "TouchInterest"  then
   
@@ -232,7 +231,6 @@ firetouchinterest(chars.HumanoidRootPart, v.Parent,0)
 end    
 end    
 wait(0.30)
-until not _G.tp
 end 
 end)
 
@@ -267,5 +265,4 @@ if not _G.noclip then return end
 end) 
 end
 end)
-
 
