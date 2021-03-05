@@ -255,14 +255,14 @@ for i,fr in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
 end
 end
 end)   
-tab4:Toggle("NoClip",false, function(t)
-_G.noclip = t
-while true do
-if not _G.noclip then return end    
-   wait(0)
-   game:GetService("RunService").Stepped:Connect(function()
-        player.Character.Humanoid:ChangeState(11)
-end) 
-end
+
+tab4:Button("Better Dao Visuals", function()
+local doacolor = game:GetService("Lighting").DoaColorCorrection
+
+
+doacolor.TintColor =  Color3.fromRGB(25, 255, 100)
+doacolor.Saturation = 3
+doacolor.Brightness = 0.30000001192093
+doacolor.Contrast = 1
 end)
 
