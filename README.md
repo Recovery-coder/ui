@@ -1,11 +1,81 @@
 mob = ""
 Distance = -9
 weapon = ""
+-- anti afk
+local VirtualUser=game:service'VirtualUser'
+game:service'Players'.LocalPlayer.Idled:connect(function()
+    VirtualUser:CaptureController()
+    VirtualUser:ClickButton2(Vector2.new())
+end)
+
 
 
 local VIM = game:GetService("VirtualInputManager")
 local chars = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
 local player = game.Players.LocalPlayer
+local function sellurn()
+    game:GetService("ReplicatedStorage").RemoteEvents.ItemRemote:FireServer()
+
+end
+local function hidename()
+if game.Players.LocalPlayer.Character.Head:FindFirstChild("Overhead") then
+game.Players.LocalPlayer.Character.Head:FindFirstChild("Overhead"):Destroy()
+end
+end
+local function quets()
+local quest = game:GetService("Players").LocalPlayer.PlayerValues.CurrentQuest.Value
+if quest == "" and currentquests == "Defeat 10 Wood Dummies"  then
+   
+game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest1)
+
+local function sellurn()
+game:GetService("ReplicatedStorage").RemoteEvents.ItemRemote:FireServer()
+
+end    
+    
+else    
+if quest == "" and currentquests == "Defeat 9 Ice Dummies"  then
+   
+game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest2)
+else
+if quest == "" and currentquests == "Defeat 8 Rock Dummies"  then
+   
+game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest3)
+ else
+if quest == "" and currentquests == "Defeat 7 Iron Dummies"  then
+   
+game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest4)
+else
+if quest == "" and currentquests == "Defeat 6 Metal Dummies"  then
+   
+game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest5)
+else
+    if quest == "" and currentquests == "Defeat 5 Steel Dummies"  then
+   
+game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest6)
+
+else
+print("no quest")
+  
+ 
+ 
+     
+ 
+ 
+ 
+  end    
+ end   
+end
+end
+end     
+end
+end
+
+
+
+
+
+
 
 currentquests = "Defeat 10 Wood Dummies"
 quest1 = game:GetService("ReplicatedStorage").Quests["Defeat 10 Wood Dummies"]
@@ -59,7 +129,7 @@ game:GetService("ReplicatedStorage").RemoteEvents.WhiteBlowRemote:FireServer(unp
     
 
 end
-local lib = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/Vape.txt")()
+local lib = loadstring(game:HttpGet"https://raw.githubusercontent.com/Recovery-coder/ui/main/Vape")()
 
 local win = lib:Window("Project Porn",Color3.fromRGB(44, 120, 224), Enum.KeyCode.RightControl)
 local tab = win:Tab("AutoFarm")
@@ -83,9 +153,9 @@ if not _G.Farm then return end
 repeat
 local v = enemy()
 damage()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(v.HumanoidRootPart.Position) * CFrame.Angles(math.rad(Distance < 0 and 0 or 0), 0, 0) + Vector3.new(3, Distance, 0)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(v.HumanoidRootPart.Position) * CFrame.Angles(math.rad(Distance < 0 and 0 or 0), 0, 0) + Vector3.new(0, Distance, 0)
 wait()
-until v.Humanoid.Health <= 0 or not _G.Farm
+until not _G.Farm or enemy ~= v.Name or not v.Parent or not v:FindFirstChild("Humanoid") or v.Humanoid.Health <= 0
 end
 end)
 tab:Toggle("AutoQuest",false, function(t)
@@ -113,7 +183,7 @@ end)
 tab:Dropdown("Mobs",{"Wood Dummy","Ice Dummy","Rock Dummy","Iron Dummy","Metal Dummy","Steel Dummy"}, function(t)
 mob = t
 end)
-tab:Dropdown("Weapons",{"Moku Moku no mi","Goro Goro no mi","Electrification","Mera Mera no mi","Kage Kage no mi","Pika Pika no mi"}, function(t)
+tab:Dropdown("Weapons",{"Moku Moku no mi","Goro Goro no mi","Electrification","Mera Mera no mi","Kage Kage no mi","Pika Pika no mi","Ittoryu; Shusui"}, function(t)
 weapon = t
 end)
 tab:Toggle("Auto Equip",false, function(t)
@@ -170,15 +240,13 @@ tab3:Toggle("Item Tp",false, function(t)
 _G.tp = t
 while true do
 if not _G.tp then return end
-repeat 
 for _, v in pairs(game:GetService("Workspace"):GetDescendants()) do
 if  v.Name == "TouchInterest"  then
   
-firetouchinterest(chars.HumanoidRootPart, v.Parent,0)
+firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent,0)
 end    
 end    
 wait(0.30)
-until not _G.tp
 end 
 end)
 
@@ -189,7 +257,7 @@ while true do
 if not _G.ew then return end
 wait(4)
 for i,fr in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-    if fr.Name == "" or fr.Name == "Bag" or fr.Name == "Moku Moku no mi" or fr.Name == "Pika Pika no mi" or fr.Name == "Kage Kage no mi" or fr.Name == "Mera Mera no mi" or fr.Name == "Electrification" or fr.Name == "Goro Goro no mi" or fr.Name == "Heart" or fr.Name == "Eyeball" or fr.Name == "Brain" or fr.Name == "Fire Stone" or fr.Name == "Lightning Stone" or fr.Name == "Gem of the Aspect" or fr.Name == "Doa Doa no mi v1" or fr.Name == "Danger Sense v1" or fr.Name == "Danger Sense v2" or fr.Name == "Hirenkyaku" or fr.Name == "Sonido" or fr.Name == "Flashstep" or fr.Name == "Bag"  then 
+    if fr.Name == "Scripts" or fr.Name == "Bag" or fr.Name == "Moku Moku no mi" or fr.Name == "Pika Pika no mi" or fr.Name == "Kage Kage no mi" or fr.Name == "Mera Mera no mi" or fr.Name == "Electrification" or fr.Name == "Goro Goro no mi" or fr.Name == "Heart" or fr.Name == "Eyeball" or fr.Name == "Brain" or fr.Name == "Fire Stone" or fr.Name == "Lightning Stone" or fr.Name == "Gem of the Aspect" or fr.Name == "Doa Doa no mi v1" or fr.Name == "Danger Sense v1" or fr.Name == "Danger Sense v2" or fr.Name == "Hirenkyaku" or fr.Name == "Sonido" or fr.Name == "Flashstep" or fr.Name == "Bag"  then 
     
     
     
@@ -203,62 +271,45 @@ for i,fr in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
 end
 end
 end)   
-tab4:Toggle("NoClip",false, function(t)
-_G.noclip = t
-while true do
-if not _G.noclip then return end    
-   wait(0)
-   game:GetService("RunService").Stepped:Connect(function()
-        player.Character.Humanoid:ChangeState(11)
-end) 
+
+tab4:Button("Better Dao Visuals", function()
+local doacolor = game:GetService("Lighting").DoaColorCorrection
+
+
+doacolor.TintColor =  Color3.fromRGB(25, 255, 100)
+doacolor.Saturation = 3
+doacolor.Brightness = 0.30000001192093
+doacolor.Contrast = 1
+end)
+
+tab4:Button("Hide Name", function()
+hidename()
+end)
+tab4:Button("Equip all Items", function()
+for _, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+v.Parent = game.Players.LocalPlayer.Character
 end
 end)
 
+tab4:Button("Sell Urn", function()
+for _, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+if v.Name == "Urn" then
+v.Parent = game.Players.LocalPlayer.Character
+end
+end
+wait(0.50)
+sellurn()
 
-local function quets()
-local quest = game:GetService("Players").LocalPlayer.PlayerValues.CurrentQuest.Value
-if quest == "" and currentquests == "Defeat 10 Wood Dummies"  then
-   
-game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest1)
- 
-    
-    
-    
-    
-else    
-if quest == "" and currentquests == "Defeat 9 Ice Dummies"  then
-   
-game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest2)
-else
-if quest == "" and currentquests == "Defeat 8 Rock Dummies"  then
-   
-game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest3)
- else
-if quest == "" and currentquests == "Defeat 7 Iron Dummies"  then
-   
-game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest4)
-else
-if quest == "" and currentquests == "Defeat 6 Metal Dummies"  then
-   
-game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest5)
-else
-    if quest == "" and currentquests == "Defeat 5 Steel Dummies"  then
-   
-game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest6)
+end)
+tab4:Toggle("Kill Aura",false, function(t)
+_G.aura = t    
+while wait(0.20) do
+if not _G.aura then return end
+damage()
 
-else
-print("no quest")
-  
- 
- 
-     
- 
- 
- 
-  end    
- end   
 end
-end
-end     
-end
-end
+end)
+
+tab4:Button("Spoof Name", function()
+game:GetService("Players").LocalPlayer.PlayerGui.Menu:FindFirstChild("Name").Text = "Nigga-Kun"
+end)
